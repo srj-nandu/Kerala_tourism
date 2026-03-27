@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERALA | The Emerald Legacy</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/hero-kerala.svg') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* The Exact Color Theme from your Reference */
+            --deep-ocean: #012326; 
+            --emerald-muted: #063b41;
+            --accent-gold: #d4af37;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--deep-ocean);
+            font-family: 'Outfit', sans-serif;
+            color: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Luxury Cursor --- */
+        #cursor { width: 6px; height: 6px; background: var(--white); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference; }
+        #cursor-f { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.2s ease; }
+
+        /* --- Nav Style from Reference --- */
+        nav {
+            position: fixed; top: 0; width: 100%; height: 90px;
+            padding: 0 6%; display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; transition: var(--transition);
+            background: linear-gradient(to bottom, rgba(1,35,38,0.8), transparent);
+        }
+        nav.scrolled { height: 70px; background: var(--deep-ocean); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+        
+        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 4px; text-decoration: none; color: var(--white); font-weight: 700; }
+        .logo span { opacity: 0.5; }
+
+        .nav-links { display: flex; gap: 2.5vw; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--white); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; opacity: 0.7; transition: 0.3s; }
+        .nav-links a:hover { opacity: 1; }
+        .contact-num { font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; }
+
+        /* --- Hero Section --- */
+        .hero { 
+            height: 85vh; display: flex; flex-direction: column; justify-content: flex-end; 
+            padding: 0 6% 100px; position: relative;
+            background: linear-gradient(to top, var(--deep-ocean) 10%, transparent 60%), 
+                        url('https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+        }
+        
+        .hero-label { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 15px; opacity: 0.8; }
+        .hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(3rem, 8vw, 6rem); line-height: 1; font-weight: 800; text-transform: uppercase; letter-spacing: -2px; }
+
+        /* --- Service Icons Section (From your Image) --- */
+        .services-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            max-width: 1200px; margin: -50px auto 100px; padding: 0 5%;
+            z-index: 10; position: relative;
+        }
+        .service-card {
+            text-align: center; padding: 40px 20px; transition: var(--transition);
+        }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-card img { width: 50px; height: 50px; margin-bottom: 20px; filter: invert(1); opacity: 0.8; }
+        .service-card h4 { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; opacity: 0.9; }
+
+        /* --- Content Layout --- */
+        .section-header { padding: 0 6% 40px; }
+        .section-header span { color: var(--accent-gold); font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; }
+        .section-header h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-top: 10px; }
+
+        .bento-container { 
+            max-width: 1400px; margin: 0 auto; padding: 0 6% 100px; 
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; 
+        }
+        
+        .bento-item { 
+            background: var(--emerald-muted); border-radius: 4px; /* Sharper edges for a more modern look */
+            position: relative; overflow: hidden; min-height: 400px; 
+            transition: var(--transition); display: flex; align-items: flex-end;
+        }
+        .bento-item:hover { transform: translateY(-5px); }
+        
+        .bento-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: 1.5s ease; z-index: 1; opacity: 0.6; }
+        .bento-item:hover .bento-img { transform: scale(1.05); opacity: 0.8; }
+
+        .bento-text { position: relative; z-index: 2; padding: 40px; width: 100%; background: linear-gradient(to top, var(--deep-ocean), transparent); }
+        .bento-text h3 { font-family: 'Cinzel', serif; font-size: 1.4rem; margin-bottom: 8px; }
+        .bento-text p { font-size: 0.8rem; opacity: 0.6; line-height: 1.6; }
+
+        .item-8 { grid-column: span 8; } .item-4 { grid-column: span 4; }
+
+        footer { background: #001214; padding: 80px 6%; border-top: 1px solid var(--border); text-align: center; }
+        .footer-logo { font-family: 'Cinzel', serif; font-size: 2rem; margin-bottom: 20px; display: block; text-decoration: none; color: #fff; }
+
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); margin-top: 20px; }
+            .item-8, .item-4 { grid-column: span 12; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div id="cursor-f"></div>
+
+    <nav id="navbar">
+        <a href="#" class="logo">KERA<span>LA.</span></a>
+        <ul class="nav-links">
+             <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('destinations') }}">Destinations</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+        <div class="contact-num">+91 91425 90404</div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-label">Soul of the South</p>
+            <h1>The Emerald <br>Legacy.</h1>
+        </div>
+    </header>
+
+    <div class="section-header">
+        <span>Curated Experiences</span>
+        <h2>Explore the Wild</h2>
+    </div>
+
+    <main class="bento-container">
+        <div class="bento-item item-8">
+            <div class="bento-img" style="background-image: url('https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&q=80&w=1200');"></div>
+            <div class="bento-text">
+                <h3>Munnar Hills</h3>
+                <p>Breathe in the mist of sprawling tea estates and rolling mountain peaks.</p>
+            </div>
+        </div>
+        <div class="bento-item item-4">
+            <div class="bento-img" style="background-image: url('https://images.unsplash.com/photo-1616140407374-245464c869be?auto=format&fit=crop&q=80&w=800');"></div>
+            <div class="bento-text">
+                <h3>Athirappilly</h3>
+                <p>The majestic roar of the forest waterfalls.</p>
+            </div>
+        </div>
+        <div class="bento-item item-4">
+            <div class="bento-img" style="background-image: url('https://images.unsplash.com/photo-1589308454676-9694ec334005?auto=format&fit=crop&q=80&w=800');"></div>
+            <div class="bento-text">
+                <h3>Varkala</h3>
+                <p>Where the red cliffs meet the Arabian sea.</p>
+            </div>
+        </div>
+        <div class="bento-item item-8">
+            <div class="bento-img" style="background-image: url('https://images.unsplash.com/photo-1581791534721-e599df4417f7?auto=format&fit=crop&q=80&w=1200');"></div>
+            <div class="bento-text">
+                <h3>Alleppey Backwaters</h3>
+                <p>A silent voyage through the heart of Kerala's liquid emeralds.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#" class="footer-logo">KERA<span>LA.</span></a>
+        <p style="opacity: 0.4; font-size: 0.8rem; letter-spacing: 1px;">&copy; 2026 THE EMERALD LEGACY. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        // Smooth Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-f');
+        let cx = 0, cy = 0, fx = 0, fy = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            cx = e.clientX; cy = e.clientY;
+            cursor.style.left = cx + 'px';
+            cursor.style.top = cy + 'px';
+        });
+
+        const loop = () => {
+            fx += (cx - fx - 17) * 0.15;
+            fy += (cy - fy - 17) * 0.15;
+            follower.style.left = fx + 'px';
+            follower.style.top = fy + 'px';
+            requestAnimationFrame(loop);
+        };
+        loop();
+
+        // Nav Scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

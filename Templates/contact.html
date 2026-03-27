@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERALA | The Emerald Legacy - Connect</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/hero-kerala.svg') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --deep-ocean: #012326; 
+            --emerald-muted: #052a2d;
+            --accent-gold: #d4af37;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.02);
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--deep-ocean); 
+            background-image: radial-gradient(circle at 50% 0%, #053b41 0%, var(--deep-ocean) 75%);
+            font-family: 'Outfit', sans-serif; 
+            color: var(--white); 
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Luxury Cursor --- */
+        #cursor { width: 6px; height: 6px; background: var(--white); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference; }
+        #cursor-f { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.2s ease; }
+
+        /* --- Navigation --- */
+        nav { 
+            padding: 25px 6%; display: flex; justify-content: space-between; align-items: center; 
+            background: linear-gradient(to bottom, var(--deep-ocean), transparent); 
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--border);
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+        }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 4px; text-decoration: none; color: var(--white); font-weight: 700; }
+        .logo span { opacity: 0.5; }
+        .nav-links { display: flex; gap: 3vw; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--white); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; opacity: 0.6; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-gold); opacity: 1; }
+
+        /* --- Header --- */
+        .contact-header { text-align: center; padding: 180px 20px 60px; }
+        .contact-header h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 10px; letter-spacing: 5px; text-transform: uppercase; font-weight: 400; }
+        .contact-header p { color: var(--accent-gold); letter-spacing: 8px; text-transform: uppercase; font-size: 0.75rem; opacity: 0.8; }
+
+        /* --- Layout --- */
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 20px 100px; display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; }
+        
+        .info-card { 
+            background: var(--glass); padding: 40px; border-radius: 2px; border: 1px solid var(--border); 
+            margin-bottom: 25px; transition: var(--transition);
+        }
+        .info-card:hover { border-color: var(--accent-gold); transform: translateY(-5px); }
+        .info-card h3 { font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 15px; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; }
+        .info-card p { opacity: 0.7; font-weight: 300; font-size: 1rem; line-height: 1.6; }
+
+        /* --- Form --- */
+        .form-container { background: var(--glass); padding: 60px; border-radius: 4px; border: 1px solid var(--border); backdrop-filter: blur(20px); }
+        .input-group { margin-bottom: 35px; position: relative; }
+        .input-group label { display: block; margin-bottom: 12px; font-size: 0.65rem; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        
+        .input-group input, .input-group textarea { 
+            width: 100%; background: rgba(255,255,255,0.03); border: none; 
+            border-bottom: 1px solid var(--border); padding: 15px 0; color: var(--white); 
+            outline: none; font-family: 'Outfit', sans-serif; transition: 0.4s;
+        }
+        .input-group input:focus, .input-group textarea:focus { border-bottom: 1px solid var(--accent-gold); background: rgba(255,255,255,0.05); }
+
+        .submit-btn { 
+            background: transparent; color: var(--white); border: 1px solid var(--accent-gold); 
+            padding: 20px 40px; border-radius: 0; font-family: 'Cinzel', serif;
+            font-weight: bold; width: 100%; cursor: pointer; text-transform: uppercase; 
+            letter-spacing: 4px; transition: var(--transition);
+        }
+        .submit-btn:hover { background: var(--accent-gold); color: var(--deep-ocean); letter-spacing: 6px; }
+
+        /* Flask Flash Message Style */
+        .flash-messages { 
+            background: rgba(212, 175, 55, 0.1); border: 1px solid var(--accent-gold); 
+            color: var(--accent-gold); padding: 20px; border-radius: 2px; 
+            margin-bottom: 40px; text-align: center; font-family: 'Cinzel', serif; font-size: 0.8rem;
+        }
+
+        footer { background: #001214; border-top: 1px solid var(--border); }
+
+        @media (max-width: 900px) { 
+            .main-container { grid-template-columns: 1fr; } 
+            .contact-header { padding-top: 140px; }
+            .form-container { padding: 40px 25px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div id="cursor-f"></div>
+
+    <nav>
+        <a href="{{ url_for('index') }}" class="logo">KERA<span>LA.</span></a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('destinations') }}">Explore</a></li>
+            <li><a href="{{ url_for('contact') }}">Connect</a></li>
+        </ul>
+        <div style="width: 50px;"></div>
+    </nav>
+
+    <div class="contact-header">
+        <p>Start Your Journey</p>
+        <h1>Connect</h1>
+    </div>
+
+    <main class="main-container">
+        <div class="info-side">
+            <div class="info-card">
+                <h3>Our Sanctuary</h3>
+                <p>Tourism Bhavan, Opposite Museum Annex, Thiruvananthapuram, Kerala 695033</p>
+            </div>
+            <div class="info-card">
+                <h3>Direct Lines</h3>
+                <p>General: +91 471 2321132<br>Email: hello@keralatourism.org</p>
+            </div>
+        </div>
+
+        <div class="form-container">
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="flash-messages">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <form action="{{ url_for('contact') }}" method="post">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="E.g. John Doe" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="message">Your Invitation</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Describe your dream escape..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Invitation</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p style="text-align: center; padding: 40px; opacity: 0.3; font-size: 0.7rem; letter-spacing: 2px;">&copy; 2026 THE EMERALD LEGACY. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-f');
+        let cx = 0, cy = 0, fx = 0, fy = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            cx = e.clientX; cy = e.clientY;
+            cursor.style.left = cx + 'px';
+            cursor.style.top = cy + 'px';
+        });
+
+        const loop = () => {
+            fx += (cx - fx - 17) * 0.15;
+            fy += (cy - fy - 17) * 0.15;
+            follower.style.left = fx + 'px';
+            follower.style.top = fy + 'px';
+            requestAnimationFrame(loop);
+        };
+        loop();
+    </script>
+
+</body>
+</html>

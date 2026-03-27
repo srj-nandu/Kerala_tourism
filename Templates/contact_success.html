@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERALA | The Emerald Legacy - Invitation Received</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/hero-kerala.svg') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --deep-ocean: #012326; 
+            --emerald-muted: #052a2d;
+            --accent-gold: #d4af37;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.02);
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--deep-ocean);
+            background-image: radial-gradient(circle at center, #053b41 0%, var(--deep-ocean) 80%);
+            font-family: 'Outfit', sans-serif;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Luxury Cursor --- */
+        #cursor { width: 6px; height: 6px; background: var(--white); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference; }
+        #cursor-f { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.2s ease; }
+
+        /* --- Global Navbar --- */
+        nav {
+            padding: 25px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--deep-ocean), transparent);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-family: 'Cinzel', serif; font-size: 1.5rem; letter-spacing: 4px; text-decoration: none; color: var(--white); font-weight: 700; }
+        .logo span { opacity: 0.5; }
+
+        .nav-links { display: flex; gap: 3vw; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--white); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; opacity: 0.6; }
+
+        /* --- Success Section --- */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .success-card {
+            max-width: 800px;
+            width: 100%;
+            background: var(--glass);
+            padding: 80px 60px;
+            border-radius: 2px; /* Sharper luxury edges */
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(20px);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-icon {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 10px;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .success-card h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 25px;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+
+        .success-card h1 span {
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        .success-card p {
+            font-size: 1rem;
+            color: var(--white);
+            opacity: 0.7;
+            margin-bottom: 40px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Concierge Note Box */
+        .concierge-note {
+            background: rgba(212, 175, 55, 0.03);
+            padding: 40px;
+            border-radius: 0;
+            border-left: 1px solid var(--accent-gold);
+            text-align: left;
+            margin: 50px 0;
+        }
+
+        .concierge-note h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .concierge-note p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            opacity: 0.6;
+            text-align: left;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--accent-gold);
+            padding: 18px 50px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--accent-gold);
+            color: var(--deep-ocean);
+            letter-spacing: 6px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            opacity: 0.3;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            border-top: 1px solid var(--border);
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 600px) {
+            .success-card { padding: 40px 20px; }
+            .nav-links { display: none; }
+            .concierge-note { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div id="cursor-f"></div>
+
+    <nav>
+        <a href="{{ url_for('index') }}" class="logo">KERA<span>LA.</span></a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('destinations') }}">Explore</a></li>
+            <li><a href="{{ url_for('contact') }}">Connect</a></li>
+        </ul>
+        <div style="width: 50px;"></div>
+    </nav>
+
+    <main>
+        <section class="success-card">
+            <span class="success-icon">Entry Confirmed</span>
+            <h1>Thanks, <span>{{ name }}</span>.</h1>
+            <p>Your journey to the heart of the soul starts here. Our curators have received your invitation and are beginning to map your extraordinary escape.</p>
+
+            <div class="concierge-note">
+                <h2>The Next Step</h2>
+                <p>A personal concierge will review your preferences. Expect a bespoke proposal and local insights delivered to your inbox within the next twenty-four hours.</p>
+            </div>
+
+            <a href="{{ url_for('index') }}" class="btn">Return to Legacy</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 THE EMERALD LEGACY. Explore the extraordinary.</p>
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-f');
+        let cx = 0, cy = 0, fx = 0, fy = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            cx = e.clientX; cy = e.clientY;
+            cursor.style.left = cx + 'px';
+            cursor.style.top = cy + 'px';
+        });
+
+        const loop = () => {
+            fx += (cx - fx - 17) * 0.15;
+            fy += (cy - fy - 17) * 0.15;
+            follower.style.left = fx + 'px';
+            follower.style.top = fy + 'px';
+            requestAnimationFrame(loop);
+        };
+        loop();
+    </script>
+
+</body>
+</html>

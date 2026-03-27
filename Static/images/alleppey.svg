@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#89d8ff"/>
+      <stop offset="100%" stop-color="#f1fcff"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#52bfd7"/>
+      <stop offset="100%" stop-color="#8ee2ef"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <circle cx="485" cy="70" r="38" fill="#ffd769"/>
+  <path d="M0 220C77 191 131 179 205 190C282 202 339 221 415 219C494 217 542 191 600 181V0H0Z" fill="#ccefdc"/>
+  <rect y="228" width="600" height="172" fill="url(#water)"/>
+  <g opacity="0.9">
+    <rect x="70" y="172" width="16" height="90" fill="#7c5735"/>
+    <ellipse cx="78" cy="160" rx="40" ry="28" fill="#4a9c63"/>
+    <ellipse cx="95" cy="178" rx="34" ry="22" fill="#71c483"/>
+    <rect x="515" y="168" width="16" height="96" fill="#7c5735"/>
+    <ellipse cx="523" cy="154" rx="42" ry="30" fill="#4a9c63"/>
+  </g>
+  <g>
+    <path d="M180 250H385L340 304H228Z" fill="#6d4c2d"/>
+    <rect x="230" y="205" width="100" height="45" rx="6" fill="#d9b173"/>
+    <path d="M220 205L280 160L342 205Z" fill="#9d7041"/>
+    <rect x="252" y="220" width="18" height="20" fill="#f5e8c7"/>
+    <rect x="286" y="220" width="18" height="20" fill="#f5e8c7"/>
+  </g>
+  <path d="M100 332C125 321 150 343 175 332C200 321 225 343 250 332C275 321 300 343 325 332C350 321 375 343 400 332C425 321 450 343 475 332C500 321 525 343 550 332" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+  <text x="300" y="70" text-anchor="middle" font-size="30" font-family="Arial" fill="#184f3c">Alleppey</text>
+</svg>

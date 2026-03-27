@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#8ad6ff"/>
+      <stop offset="100%" stop-color="#e9fbff"/>
+    </linearGradient>
+    <linearGradient id="hillBack" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#9ad7b0"/>
+      <stop offset="100%" stop-color="#4ca06e"/>
+    </linearGradient>
+    <linearGradient id="hillFront" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#5ab47e"/>
+      <stop offset="100%" stop-color="#2d714c"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <circle cx="485" cy="75" r="42" fill="#ffd769"/>
+  <ellipse cx="142" cy="88" rx="72" ry="20" fill="#ffffff" opacity="0.9"/>
+  <ellipse cx="206" cy="88" rx="54" ry="18" fill="#ffffff" opacity="0.9"/>
+  <path d="M0 270C65 220 121 192 188 205C252 218 290 252 355 252C420 252 454 221 512 214C549 210 576 215 600 224V400H0Z" fill="url(#hillBack)"/>
+  <path d="M0 320C64 282 128 256 204 270C282 284 331 330 415 332C487 333 543 302 600 290V400H0Z" fill="url(#hillFront)"/>
+  <path d="M118 250L198 118L278 250Z" fill="#427f58"/>
+  <path d="M220 250L315 92L410 250Z" fill="#2f6946"/>
+  <path d="M45 292C93 271 140 302 188 292C236 281 283 312 331 292C379 271 426 304 474 292C522 279 561 297 600 290V400H0Z" fill="#3f8f5b" opacity="0.45"/>
+  <path d="M45 318C83 306 118 334 156 318C194 302 229 330 267 318C305 306 340 334 378 318C416 302 451 330 489 318C527 306 562 331 600 318" fill="none" stroke="#d8f5de" stroke-width="4" opacity="0.8"/>
+  <rect x="58" y="308" width="484" height="54" rx="26" fill="#6acde0"/>
+  <path d="M105 326C125 314 145 338 165 326C185 314 205 338 225 326C245 314 265 338 285 326C305 314 325 338 345 326C365 314 385 338 405 326C425 314 445 338 465 326" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.75"/>
+  <text x="300" y="70" text-anchor="middle" font-size="30" font-family="Arial" fill="#184f3c">Munnar</text>
+</svg>

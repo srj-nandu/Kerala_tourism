@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERALA | The Emerald Legacy - About</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='images/hero-kerala.svg') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Your Exact Dark Theme Palette */
+            --deep-ocean: #011c1e; 
+            --emerald-muted: #052a2d;
+            --accent-gold: #d4af37;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.02);
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--deep-ocean);
+            /* Subtle radial glow to match the reference style */
+            background-image: radial-gradient(circle at 50% -20%, #053b41 0%, var(--deep-ocean) 70%);
+            font-family: 'Outfit', sans-serif;
+            color: var(--white);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Luxury Cursor --- */
+        #cursor { width: 6px; height: 6px; background: var(--white); border-radius: 50%; position: fixed; pointer-events: none; z-index: 10000; mix-blend-mode: difference; }
+        #cursor-f { width: 35px; height: 35px; border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.2s ease; }
+
+        /* --- Navigation --- */
+        .navbar {
+            position: fixed; top: 0; width: 100%; height: 90px;
+            padding: 0 6%; display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; background: linear-gradient(to bottom, var(--deep-ocean), transparent);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo { font-family: 'Cinzel', serif; font-size: 1.4rem; letter-spacing: 4px; text-decoration: none; color: var(--white); font-weight: 700; }
+        .logo span { opacity: 0.5; }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5vw;
+        }
+
+        .navbar a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .navbar a:hover { opacity: 1; color: var(--accent-gold); }
+
+        /* --- Content Layout --- */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 180px 20px 100px;
+            text-align: center;
+        }
+
+        .content h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: var(--white);
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        .content p {
+            margin-bottom: 24px;
+            color: var(--white);
+            opacity: 0.7;
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Refined Info Box --- */
+        .info-box {
+            margin-top: 80px;
+            background: var(--glass);
+            padding: 80px 40px;
+            border-radius: 2px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(15px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-box::after {
+            content: "EST. 2026";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            opacity: 0.2;
+        }
+
+        .info-box:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.04);
+            transform: scale(1.02);
+        }
+
+        .info-box p {
+            font-family: 'Outfit', sans-serif;
+            color: var(--white);
+            opacity: 0.9;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 0px;
+            line-height: 1.6;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #000d0e;
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer p {
+            color: var(--white);
+            opacity: 0.3;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .navbar ul { display: none; }
+            .content { padding-top: 140px; }
+            .info-box { padding: 50px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+    <div id="cursor-f"></div>
+
+    <nav class="navbar">
+        <a href="#" class="logo">KERA<span>LA.</span></a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/destinations">Destinations</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <div style="width: 100px;"></div> 
+    </nav>
+
+    <section class="content">
+        <h1>About Kerala Tourism</h1>
+        <p>Kerala is often called God's Own Country because of its natural beauty and peaceful travel experiences.</p>
+        <p>From green hills and wildlife to beaches and backwaters, Kerala attracts visitors from around the world.</p>
+
+        <div class="info-box">
+            <p>Kerala tourism is special because it combines tradition, culture, food, festivals, and scenic destinations in one place.</p>
+            <br>
+            <p>Whether someone wants adventure, relaxation, or a family vacation, Kerala has something for everyone.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Learn more about Kerala and plan your next unforgettable trip.</p>
+    </footer>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-f');
+        let cx = 0, cy = 0, fx = 0, fy = 0;
+
+        window.addEventListener('mousemove', (e) => {
+            cx = e.clientX; cy = e.clientY;
+            cursor.style.left = cx + 'px';
+            cursor.style.top = cy + 'px';
+        });
+
+        const loop = () => {
+            fx += (cx - fx - 17) * 0.15;
+            fy += (cy - fy - 17) * 0.15;
+            follower.style.left = fx + 'px';
+            follower.style.top = fy + 'px';
+            requestAnimationFrame(loop);
+        };
+        loop();
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#86d8ff"/>
+      <stop offset="100%" stop-color="#eefbff"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#55c2de"/>
+      <stop offset="100%" stop-color="#8de0ef"/>
+    </linearGradient>
+    <linearGradient id="cliff" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#db8f63"/>
+      <stop offset="100%" stop-color="#b8633e"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#sky)"/>
+  <circle cx="490" cy="74" r="40" fill="#ffd769"/>
+  <rect y="184" width="600" height="116" fill="url(#sea)"/>
+  <rect y="300" width="600" height="100" fill="#f3d89f"/>
+  <path d="M0 204C25 194 50 214 75 204C100 194 125 214 150 204C175 194 200 214 225 204C250 194 275 214 300 204C325 194 350 214 375 204C400 194 425 214 450 204C475 194 500 214 525 204C550 194 575 214 600 204" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" opacity="0.75"/>
+  <path d="M362 108H462L424 288H318Z" fill="url(#cliff)"/>
+  <rect x="304" y="288" width="186" height="34" fill="#af5e3b"/>
+  <path d="M88 300C134 246 203 233 246 266C255 222 315 205 348 226C331 268 289 293 248 300Z" fill="#76c687"/>
+  <path d="M137 295C172 263 223 259 254 279C260 246 304 238 332 252C319 283 287 296 253 298Z" fill="#5ead72"/>
+  <text x="300" y="70" text-anchor="middle" font-size="30" font-family="Arial" fill="#184f3c">Varkala</text>
+</svg>
